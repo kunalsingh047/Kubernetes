@@ -34,16 +34,17 @@ Step 2: Configure Kubernetes Repository
 Kubernetes packages are not available in the default CentOS 7 & RHEL 7 repositories, Use below command to configure its package repositories.
 
 
-[root@k8s-master ~]# cat <<EOF > /etc/yum.repos.d/kubernetes.repo
-> [kubernetes]
-> name=Kubernetes
-> baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
-> enabled=1
-> gpgcheck=1
-> repo_gpgcheck=1
-> gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
->         https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-> EOF [root@k8s-master ~]#
+cat >>/etc/yum.repos.d/kubernetes.repo<<EOF
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
+        https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+EOF
+
 
 
 Step 3: Install Kubead
